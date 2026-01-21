@@ -1,6 +1,44 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const whatsappNumber = "916305852159"; // your WhatsApp number (no +)
+
+    const text = `
+Hello Ashish 👋
+
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+
+Message:
+${formData.message}
+    `;
+
+    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      text
+    )}`;
+
+    window.open(whatsappURL, "_blank");
+  };
+
   return (
     <section
       id="contact"
@@ -35,6 +73,7 @@ export default function Contact() {
             <a
               href="https://www.linkedin.com/in/erikilla-ashish-11ash07ish"
               target="_blank"
+              rel="noopener noreferrer"
               className="px-5 py-3 rounded-lg border border-gray-700
                          hover:border-cyan-400 hover:text-cyan-400 transition"
             >
@@ -44,31 +83,39 @@ export default function Contact() {
             <a
               href="https://github.com/ashisherikilla"
               target="_blank"
+              rel="noopener noreferrer"
               className="px-5 py-3 rounded-lg border border-gray-700
                          hover:border-cyan-400 hover:text-cyan-400 transition"
             >
               GitHub
             </a>
+
             <a
-              href="https://wa.me/916305852159?text=Hello%20Ashish,%20I%20came%20across%20your%20portfolio."
+              href="https://wa.me/916305852159"
               target="_blank"
+              rel="noopener noreferrer"
               className="px-5 py-3 rounded-lg border border-gray-700
-                         hover:border-cyan-400 hover:text-cyan-400 transition"
+                         hover:border-green-500 hover:text-green-500 transition"
             >
               WhatsApp
             </a>
           </div>
         </div>
 
-        {/* RIGHT — CONTACT FORM */}
+        {/* RIGHT — CONTACT FORM (WHATSAPP SUBMIT) */}
         <motion.form
+          onSubmit={handleSubmit}
           whileHover={{ scale: 1.01 }}
           className="bg-[#0f1629] border border-gray-800
                      rounded-xl p-6 space-y-4"
         >
           <input
             type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
             placeholder="Your Name"
+            required
             className="w-full px-4 py-3 rounded-lg
                        bg-black border border-gray-700
                        focus:border-cyan-400 outline-none"
@@ -76,7 +123,11 @@ export default function Contact() {
 
           <input
             type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
             placeholder="Your Email"
+            required
             className="w-full px-4 py-3 rounded-lg
                        bg-black border border-gray-700
                        focus:border-cyan-400 outline-none"
@@ -84,6 +135,9 @@ export default function Contact() {
 
           <input
             type="tel"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
             placeholder="Phone Number"
             className="w-full px-4 py-3 rounded-lg
                        bg-black border border-gray-700
@@ -92,7 +146,11 @@ export default function Contact() {
 
           <textarea
             rows="4"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
             placeholder="Your Message"
+            required
             className="w-full px-4 py-3 rounded-lg
                        bg-black border border-gray-700
                        focus:border-cyan-400 outline-none resize-none"
@@ -100,21 +158,21 @@ export default function Contact() {
 
           <button
             type="submit"
-            className="w-full py-3 rounded-lg bg-cyan-500
+            className="w-full py-3 rounded-lg bg-green-500
                        text-black font-semibold
-                       hover:bg-cyan-400 active:scale-95 transition"
+                       hover:bg-green-400 active:scale-95 transition"
           >
-            Send Message
+            Send via WhatsApp
           </button>
         </motion.form>
 
-        {/* Resume CTA */}
+        {/* RESUME CTA */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="mt-12 flex justify-center"
+          className="md:col-span-2 mt-12 flex justify-center"
         >
           <motion.a
             href="/ErikillaAshish_Resume.pdf"
@@ -134,12 +192,12 @@ export default function Contact() {
               ease: "easeInOut",
             }}
             className="
-      px-10 py-4 rounded-2xl
-      bg-linear-to-r from-cyan-500 to-blue-500
-      text-black font-semibold text-lg
-      shadow-xl
-      transition
-    "
+              px-10 py-4 rounded-2xl
+              bg-gradient-to-r from-cyan-500 to-blue-500
+              text-black font-semibold text-lg
+              shadow-xl
+              transition
+            "
           >
             📄 View My Resume
           </motion.a>
