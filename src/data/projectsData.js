@@ -30,6 +30,12 @@ export const projectsData = [
     tech: ["Java", "Data Structures", "Algorithms"],
     github: "https://github.com/ashisherikilla/Git-Simulator-DSA.git",
     live: "",
-  },
+  },{
+    title: "Portfolio Website",
+    description: "A responsive portfolio website showcasing projects and skills.",
+    tech: ["html", "css", "javascript"],
+    github: "https://github.com/ashisherikilla/My-Portfolio.git",
+    live: "https://ashisherikilla.github.io/My-Portfolio/",
+  }
 ];
 
