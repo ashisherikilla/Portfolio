@@ -1,4 +1,14 @@
-export const aboutData = {
+import React from 'react';
+  
+  const AboutData = () =>  {
+	return (
+	  <div>
+	  </div>
+	);
+  }
+  
+  export default AboutData;
+  export const aboutData = {
   intro: `I started my B.Tech journey in 2023 with a strong interest in Civil Engineering. 
 Initially, coding felt intimidating—especially after struggling with C programming. 
 But instead of giving up, I asked myself: “Why can’t I code?” That question changed everything.`,

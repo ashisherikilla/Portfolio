@@ -1,4 +1,14 @@
-export const projectsData = [
+import React from 'react';
+  
+  const ProjectsData = () =>  {
+	return (
+	  <div>
+	  </div>
+	);
+  }
+  
+  export default ProjectsData;
+  export const projectsData = [
   {
     title: "Student Attendance Management API",
     description: "RESTful API for managing student attendance and logs.",
