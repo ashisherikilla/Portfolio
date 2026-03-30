@@ -1,14 +1,4 @@
-import React from 'react';
-  
-  const SkillsData = () =>  {
-	return (
-	  <div>
-	  </div>
-	);
-  }
-  
-  export default SkillsData;
-  
+
   export const skillsData = {
   frontend: ["React", "JavaScript", "HTML", "CSS", "Tailwind"],
   backend: ["Node.js", "Express", "MongoDB", "REST APIs"],
